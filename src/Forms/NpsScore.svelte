@@ -76,6 +76,8 @@
     text-align: start;
     max-width: 500px;
     min-width: 500px;
+    max-height: 266px;
+    min-height: 266px;
   }
 
 

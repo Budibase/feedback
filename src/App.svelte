@@ -2,7 +2,7 @@
 
 	import { Popover, Button } from "@budibase/bbui"
 	import NpsScore from "./Forms/NpsScore.svelte"
-	import { onMount } from "svelte"
+	import { afterUpdate } from "svelte"
 
 	let dropdown
 	let button
@@ -15,20 +15,16 @@
 		}, "*")
 	}
 
-	onMount(() => {
-		/*const observer = new ResizeObserver(entries => {
-			window.parent.postMessage({
-				type: "loaded",
-				height: entries[0].contentRect.height,
-				width: entries[0].contentRect.width,
-			}, "*")
-		})
-		observer.observe(mainElement)*/
+	const sendResizeMessage = (height, width) => {
 		window.parent.postMessage({
 			type: "loaded",
-			height: mainElement.getBoundingClientRect().height,
-			width: mainElement.getBoundingClientRect().width,
+			height: height,
+			width: width,
 		}, "*")
+	}
+
+	afterUpdate(() => {
+		sendResizeMessage(mainElement.getBoundingClientRect().height, mainElement.getBoundingClientRect().width)
 	})
 
 </script>
