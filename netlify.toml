@@ -1,0 +1,5 @@
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/definition.json"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
